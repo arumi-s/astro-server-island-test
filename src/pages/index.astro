@@ -1,0 +1,27 @@
+---
+import RenderData from '@/components/RenderData.astro';
+import RenderFallback from '@/components/RenderFallback.tsx';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const users = [1, 2, 3, 4];
+---
+
+<BaseLayout title="Home" description="Astro server island test">
+	<div class="container mx-auto px-6 py-8">
+		<div class="flex flex-col items-center justify-center">
+			<h1 class="text-4xl font-bold">Hello, world!</h1>
+			<p class="text-xl">
+				Welcome to the <a href="https://astro.build/">Astro</a> starter template.
+			</p>
+		</div>
+		<div class="mt-16 grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4">
+			{
+				users.map((id) => (
+					<RenderData id={id} server:defer>
+						<RenderFallback slot="fallback" client:idle />
+					</RenderData>
+				))
+			}
+		</div>
+	</div>
+</BaseLayout>

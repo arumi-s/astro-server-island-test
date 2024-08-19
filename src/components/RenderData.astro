@@ -1,0 +1,16 @@
+---
+import RenderUser from '@/components/RenderUser';
+import { getUser } from '@/data/getUser';
+
+Astro.response.headers.set('Cache-Control', 's-maxage=60');
+
+type Props = {
+	id: number;
+};
+
+const { id } = Astro.props;
+
+const user = await getUser(id);
+---
+
+<RenderUser user={user} client:idle />

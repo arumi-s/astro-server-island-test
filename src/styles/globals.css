@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html,
+	body {
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	* {
+		@apply min-w-0;
+	}
+
+	body {
+		@apply bg-white text-neutral-900;
+	}
+}
